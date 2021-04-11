@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 # Sinatra
 gem 'sinatra'
+gem 'sinatra-validation'
 gem 'sinatra-contrib'
 gem 'sinatra-rest-api'
-gem 'sinatra-validation'
 # ORM
 gem 'activerecord'
 gem 'sinatra-activerecord'
@@ -15,3 +15,4 @@ gem 'pg'
 gem 'rspec'
 
 gem 'rerun'
+gem 'httparty'

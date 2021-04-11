@@ -17,6 +17,12 @@ Driver.find_or_create_by(
   status: "available",
   license_plate: "LKS354"
 )
+Driver.find_or_create_by(
+  email: "AdddM@email.com",
+  status: "available",
+  license_plate: "LKS354"
+)
+
 #-------------------------RIDERS------------------------------------------------
 Rider.find_or_create_by(
   name: "Jenny Patiño",
