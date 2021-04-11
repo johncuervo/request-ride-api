@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 2
+  username: 'postgres'
+  password: 'dtroot@'
+
+development:
+  <<: *default
+  database: request_ride_api_development
+
+test:
+  <<: *default
+  database: request_ride_api_test
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
