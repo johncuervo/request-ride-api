@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2021_04_10_193313) do
     t.string "license_plate"
     t.string "payment_method"
     t.string "type"
+    t.string "token"
+    t.string "acceptance_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
