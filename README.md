@@ -1,17 +1,20 @@
-# Sinatra REST API
+# Sinatra REST API - Request Ride API
 
-Install all the gems
+### Install all the gems
 - bundle install
 
-Create DB
+### Create DB
 Once you've created and configured the config/database.yml file, you can create
 the database.
 
-bundle exec rake db:create
-bundle exec rake db:migrate
-bundle exec rake db:seed
+-bundle exec rake db:create
+-bundle exec rake db:migrate
+-bundle exec rake db:seed
 
-Run Aplication
+### Tokenize Card
+- `/user/token-card`
+
+### Run Aplication
 -bundle exec rerun app.rb
 
 ## Contributor
