@@ -11,6 +11,9 @@ the database.
 -bundle exec rake db:migrate
 -bundle exec rake db:seed
 
+## Run Aplication
+-bundle exec rerun app.rb
+
 ## Routes
 
 #### Tokenize Card
@@ -24,8 +27,12 @@ the database.
 #### Finish a Ride
 - `/drivers/:id/finish-ride`
 
-## Run Aplication
--bundle exec rerun app.rb
+## Run Test - RSpec
+- `rspec spec/models/driver_spec.rb`
+- `rspec spec/models/rider_spec.rb`
+- `rspec spec/models/ride_spec.rb`
+- `rspec spec/models/transaction_spec.rb`
+- `rspec spec/models/payment_method_spec.rb`
 
 ## Contributor
 

@@ -1,6 +1,19 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    actionpack (6.1.3.1)
+      actionview (= 6.1.3.1)
+      activesupport (= 6.1.3.1)
+      rack (~> 2.0, >= 2.0.9)
+      rack-test (>= 0.6.3)
+      rails-dom-testing (~> 2.0)
+      rails-html-sanitizer (~> 1.0, >= 1.2.0)
+    actionview (6.1.3.1)
+      activesupport (= 6.1.3.1)
+      builder (~> 3.1)
+      erubi (~> 1.4)
+      rails-dom-testing (~> 2.0)
+      rails-html-sanitizer (~> 1.1, >= 1.2.0)
     activemodel (6.1.3.1)
       activesupport (= 6.1.3.1)
     activerecord (6.1.3.1)
@@ -12,7 +25,15 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    builder (3.2.4)
     concurrent-ruby (1.1.8)
+    crass (1.0.6)
+    database_cleaner (2.0.1)
+      database_cleaner-active_record (~> 2.0.0)
+    database_cleaner-active_record (2.0.0)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     diff-lcs (1.4.4)
     dry-configurable (0.12.1)
       concurrent-ruby (~> 1.0)
@@ -48,6 +69,14 @@ GEM
       dry-equalizer (~> 0.2)
       dry-initializer (~> 3.0)
       dry-schema (~> 1.5, >= 1.5.2)
+    erubi (1.10.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
+    faker (2.11.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.0)
     httparty (0.18.1)
       mime-types (~> 3.0)
@@ -57,18 +86,40 @@ GEM
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    loofah (2.9.1)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.5.9)
+    method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0225)
+    mini_portile2 (2.5.0)
     minitest (5.14.4)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
+    nokogiri (1.11.3)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     pg (1.2.3)
+    racc (1.5.2)
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
+    rails-dom-testing (2.0.3)
+      activesupport (>= 4.2.0)
+      nokogiri (>= 1.6)
+    rails-html-sanitizer (1.3.0)
+      loofah (~> 2.3)
+    railties (6.1.3.1)
+      actionpack (= 6.1.3.1)
+      activesupport (= 6.1.3.1)
+      method_source
+      rake (>= 0.8.7)
+      thor (~> 1.0)
     rake (13.0.3)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
@@ -89,6 +140,12 @@ GEM
       rspec-support (~> 3.10.0)
     rspec-support (3.10.2)
     ruby2_keywords (0.0.4)
+    shoulda (4.0.0)
+      shoulda-context (~> 2.0)
+      shoulda-matchers (~> 4.0)
+    shoulda-context (2.0.0)
+    shoulda-matchers (4.5.1)
+      activesupport (>= 4.2.0)
     sinatra (2.1.0)
       mustermann (~> 1.0)
       rack (~> 2.2)
@@ -109,6 +166,7 @@ GEM
       dry-validation
       sinatra
       sinatra-contrib
+    thor (1.1.0)
     tilt (2.0.10)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -119,11 +177,16 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  database_cleaner
+  factory_bot_rails
+  faker (~> 2.11.0)
   httparty
   pg
   rake
   rerun
   rspec
+  shoulda
+  shoulda-matchers
   sinatra
   sinatra-activerecord
   sinatra-contrib
