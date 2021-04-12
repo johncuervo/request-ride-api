@@ -11,7 +11,7 @@ the database.
 -bundle exec rake db:migrate
 -bundle exec rake db:seed
 
-## Config Rider
+## Routes
 
 #### Tokenize Card
 - `/riders/:id/token-card`
@@ -19,6 +19,10 @@ the database.
 - `/riders/:id/acceptance-token`
 #### Payment Sources
 - `/riders/:id/payment-sources`
+#### Request Ride
+- `/riders/:id/request-ride`
+#### Finish a Ride
+- `/drivers/:id/finish-ride`
 
 ## Run Aplication
 -bundle exec rerun app.rb

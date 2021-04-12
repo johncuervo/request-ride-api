@@ -1,3 +1,4 @@
+# Token Card
 get '/riders/:id/token-card' do
   rider = Rider.find(params[:id])
   response = HTTParty.post('https://sandbox.wompi.co/v1/tokens/cards',
@@ -23,6 +24,7 @@ end
 #   response.body
 # end
 
+# Payment Sources
 get '/riders/:id/payment-sources' do
   rider = Rider.find(params[:id])
   response_ac_tok = HTTParty.get('https://sandbox.wompi.co/v1/merchants/pub_test_VOQh65XWeFmEepm0lKqQiHRZSxMruXTM')
@@ -36,7 +38,24 @@ get '/riders/:id/payment-sources' do
       "acceptance_token": rider.acceptance_token
     }.to_json,
     :headers => { 'Authorization' => 'Bearer prv_test_IL8OmjsXYgF2tH64xLdMWeWM5UiB8v3S
-' }
-  )
-  response.body
-end
+      ' }
+    )
+    response.body
+  end
+
+  # Request a Ride
+  get '/riders/:id/request-ride' do
+    rider = Rider.find(params[:id])
+    if rider.status != "in_ride"
+      ride = rider.request_ride
+      ride.to_json
+    else
+      error = {
+        "error": {
+          "type":"NOT_CREATE_REQUEST_RIDE",
+          "reason":"User on a ride"
+        }
+      }
+      error.to_json
+    end
+  end
