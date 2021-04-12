@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_193313) do
+ActiveRecord::Schema.define(version: 2021_04_12_040624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "payment_methods", force: :cascade do |t|
+    t.integer "payment_source_id"
+    t.string "status"
+    t.string "method"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "rides", force: :cascade do |t|
     t.integer "driver_id"
@@ -53,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_193313) do
     t.string "type"
     t.string "token"
     t.string "acceptance_token"
+    t.integer "payment_method_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

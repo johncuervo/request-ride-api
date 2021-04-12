@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :type
       t.string :token
       t.string :acceptance_token
+      t.integer :payment_method_id
 
       t.timestamp :created_at
       t.timestamp :updated_at

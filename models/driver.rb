@@ -1,6 +1,13 @@
 # models/driver.rb
 class Driver < User
-  # validates :name, presence: true
+# == Associations =========================================================
+  validates :name, :email, :license_plate, presence: true
+  validates :email, uniqueness: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :license_plate, format: { with: /[A-Z]{3}[0-9]{3}/, message: "Format invalid" }
+# == Validations ==========================================================
+
+# == Class Methods ========================================================
   def finish_ride(ride)
     ride.update(
       status: "finish",

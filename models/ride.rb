@@ -1,8 +1,11 @@
 # models/ride.rb
 class Ride < ActiveRecord::Base
+# == Associations =========================================================
    belongs_to :driver
    belongs_to :rider
-
+# == Validations ==========================================================
+   validates :payment_method, :start_address, :date_initial, presence: true
+# == Class Methods ========================================================
    def calculate_total_amount
      self.distance = self.calculate_distance
      self.duration = (self.date_final - self.date_initial)/60
@@ -39,7 +42,7 @@ class Ride < ActiveRecord::Base
      distance = earth_radius * c;
      #Distance Km
      distance = (distance/1000).round(2);
-     
+
      return distance
    end
 

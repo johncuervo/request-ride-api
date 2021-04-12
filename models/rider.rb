@@ -1,5 +1,12 @@
 # models/rider.rb
 class Rider < User
+# == Associations =========================================================
+  belongs_to :driver
+# == Validations ==========================================================
+  validates :name, :email, presence: true
+  validates :email, uniqueness: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+# == Class Methods ========================================================
   def request_ride
     driver = Driver.where(status: "available").first
     ride = Ride.create(

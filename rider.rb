@@ -27,9 +27,9 @@ end
 # Payment Sources
 get '/riders/:id/payment-sources' do
   rider = Rider.find(params[:id])
-  response_ac_tok = HTTParty.get('https://sandbox.wompi.co/v1/merchants/pub_test_VOQh65XWeFmEepm0lKqQiHRZSxMruXTM')
-  rider.acceptance_token = response_ac_tok.parsed_response["data"]["presigned_acceptance"]["acceptance_token"]
-  rider.save
+  response_acceptance_token = HTTParty.get('https://sandbox.wompi.co/v1/merchants/pub_test_VOQh65XWeFmEepm0lKqQiHRZSxMruXTM')
+  rider.acceptance_token = response_acceptance_token.parsed_response["data"]["presigned_acceptance"]["acceptance_token"]
+
   response = HTTParty.post('https://sandbox.wompi.co/v1/payment_sources',
     :body => {
       "type": rider.payment_method,
@@ -40,6 +40,13 @@ get '/riders/:id/payment-sources' do
     :headers => { 'Authorization' => 'Bearer prv_test_IL8OmjsXYgF2tH64xLdMWeWM5UiB8v3S
       ' }
     )
+    payment_method = PaymentMethod.create(
+      payment_source_id: response.parsed_response["data"]["id"],
+      status: response.parsed_response["status"],
+      method: ride.payment_method
+    )
+    rider.payment_method_id = payment_method.id
+    rider.save
     response.body
   end
 

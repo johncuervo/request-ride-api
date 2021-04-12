@@ -1,5 +1,5 @@
 # models/user.rb
-class User < ActiveRecord::Base
+class PaymentMethod < ActiveRecord::Base
 # == Associations =========================================================
 
 # == Validations ==========================================================
